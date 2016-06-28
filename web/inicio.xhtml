@@ -76,17 +76,21 @@
                             28 de Julio
                         </f:facet>
 
-                        <p:panel header="#{ses28.nombreTrabajo}" style="text-align:center">
+                        <p:panel header="#{ses28.descripcionSesion}" style="text-align:center">
                             <h:panelGrid columns="2" style="width:100%">
+                                                            
+                                 <h:outputLabel value="Moderador:"></h:outputLabel>
+                                 <h:outputText value="#{ses28.congrModerador.nombre} #{ses28.congrModerador.apellidos}" />
                                 
-                                <h:outputLabel value="Eje temático:"></h:outputLabel>
-                                <h:outputText value="#{ses28.ejetematico}" />  
+                                <h:outputLabel value="Hora de Inicio:"></h:outputLabel>
+                                <h:outputText value="#{ses28.fechaDesde}">
+                                    <f:convertDateTime pattern="hh:mm a" locale="es_CR" timeZone="America/Costa_Rica" />
+                                </h:outputText>
                                 
-                                <h:outputLabel value="Hora:"></h:outputLabel>
-                                <h:outputText value="#{ses28.horas}" />
-                                
-                                <h:outputLabel value="Autor:"></h:outputLabel>
-                                <h:outputText value="#{ses28.autores}" />
+                                <h:outputLabel value="Hora de Fin"></h:outputLabel>
+                                <h:outputText value="#{ses28.fechaHasta}">
+                                    <f:convertDateTime pattern="hh:mm a" locale="es_CR" timeZone="America/Costa_Rica" />
+                                </h:outputText>
                                 
                             </h:panelGrid>
                         </p:panel>

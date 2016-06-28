@@ -97,6 +97,26 @@ public class AccesoCalendario {
 
     private List<CongrSesion> obtenerSesiones28() {
         List<CongrSesion> sesiones = new ArrayList<>();
+        
+        Session sesion;
+        sesion = HibernateUtil.getSessionFactory().openSession();
+
+        try {
+            Date fechaInicial = FechaUtil.convertirFecha("28/07/2016");
+            Date fechaFinal = FechaUtil.convertirFecha("29/07/2016");
+            Query q = sesion.createQuery("from CongrSesion where fechaDesde >= :fechaInicial and fechaHasta < :fechaFinal order by fechaDesde asc");
+            q.setDate("fechaInicial", fechaInicial);
+            q.setDate("fechaFinal", fechaFinal);
+            sesiones = (List<CongrSesion>) q.list();
+            
+            for(CongrSesion congreso : sesiones){
+                Hibernate.initialize(congreso.getCongrModerador());
+            }
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        }
+
+        sesion.close();
 
         return sesiones;
     }
