@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="hibernate.connection.driver_class">oracle.jdbc.driver.OracleDriver</property>
+    <property name="hibernate.connection.url">jdbc:oracle:thin:@localhost:1521:XE</property>
+    <property name="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</property>
+    <property name="show_sql">true</property>
+    <property name="hibernate.connection.username">sigepro</property>
+    <property name="hibernate.connection.password">sigepro</property>
+    <mapping resource="entidades/SegRol.hbm.xml"/>
+    <mapping resource="entidades/CongrAdjunto.hbm.xml"/>
+    <mapping resource="entidades/AdmAdjuntoTipoMime.hbm.xml"/>
+    <mapping resource="entidades/SegUsuarioInterno.hbm.xml"/>
+    <mapping resource="entidades/CongrEjeTematico.hbm.xml"/>
+    <mapping resource="entidades/CongrAutor.hbm.xml"/>
+    <mapping resource="entidades/CongrModerador.hbm.xml"/>
+    <mapping resource="entidades/CongrTipoTrabajoAcademico.hbm.xml"/>
+    <mapping resource="entidades/AdmModuloSistema.hbm.xml"/>
+    <mapping resource="entidades/CongrCongreso.hbm.xml"/>
+    <mapping resource="entidades/SegPermiso.hbm.xml"/>
+    <mapping resource="entidades/CongrSesion.hbm.xml"/>
+    <mapping resource="entidades/CongrTrabajoAcademico.hbm.xml"/>
+    <mapping resource="entidades/CongrSala.hbm.xml"/>
+    <mapping resource="entidades/SegUsuario.hbm.xml"/>
+    <mapping resource="entidades/ExpPersona.hbm.xml"/>
+    <mapping resource="entidades/AdmTipoIdentificacion.hbm.xml"/>
+  </session-factory>
+</hibernate-configuration>

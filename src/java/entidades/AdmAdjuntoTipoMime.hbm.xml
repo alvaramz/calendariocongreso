@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 27/06/2016 06:34:08 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="entidades.AdmAdjuntoTipoMime" table="ADM_ADJUNTO_TIPO_MIME" schema="SIGEPRO" optimistic-lock="version">
+        <comment>ALMACENA LOS TIPOS DE CONTENIDO DE UN DOCUMENTO. SE ALMACENA SU FORMATO PARA PERMITIR SER DESPLEGADO POR EL SISTEMA.</comment>
+        <id name="idAdjuntoTipoMime" type="byte">
+            <column name="ID_ADJUNTO_TIPO_MIME" precision="2" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <property name="tipoMime" type="string">
+            <column name="TIPO_MIME" length="100" not-null="true" unique="true">
+                <comment>ALMACENA EL MIMETYPE DEL DOCUMENTO.</comment>
+            </column>
+        </property>
+        <property name="descripcion" type="string">
+            <column name="DESCRIPCION" length="150" not-null="true">
+                <comment>INDICA LA DESCRIPCI&#211;N DEL MIMETYPE</comment>
+            </column>
+        </property>
+        <property name="extension" type="string">
+            <column name="EXTENSION" length="10" not-null="true">
+                <comment>INDICA LA EXTENSI&#211;N DEL MIMETYPE. POR EJEMPLO: ' PDF '</comment>
+            </column>
+        </property>
+        <set name="congrAdjuntos" table="CONGR_ADJUNTO" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ID_ADJUNTO_TIPO_MIME" precision="2" scale="0" not-null="true">
+                    <comment>REPRESENTA EL TIPO DE DOCUMENTO ADJUNTO. CITESE COMO EJEMPLO: "APPLICATION/MSWORD, APPLICATION/OCTET-STREAM". LLAVE PRIMARIA DE
+                    ADM_ADJUNTO_TIPO_MIME</comment>
+                </column>
+            </key>
+            <one-to-many class="entidades.CongrAdjunto" />
+        </set>
+    </class>
+</hibernate-mapping>

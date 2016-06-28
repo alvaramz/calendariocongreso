@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 27/06/2016 06:34:08 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="entidades.SegUsuario" table="SEG_USUARIO" schema="SIGEPRO" optimistic-lock="version">
+        <comment>TABLA ENCARGADA DE ALMACENAR LOS USUARIOS DEL SISTEMA, INCLUYE LOS QUE SE AUTENTICAN A TRAV&#201;S DE LDAP Y DE MANERA INTERNA.</comment>
+        <id name="idUsuario" type="string">
+            <column name="ID_USUARIO" length="30" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="expPersona" class="entidades.ExpPersona" fetch="select">
+            <column name="IDENTIFICACION" length="20" not-null="true">
+                <comment>INDICA LA IDENTIFICACI&#211;N DE LA PERSONA ASOCIADA AL USUARIO.</comment>
+            </column>
+            <column name="ID_TIPO_IDENTIFICACION" precision="2" scale="0" not-null="true">
+                <comment>INDICA EL TIPO DE IDENTIFICACI&#211;N UTILIZADO EN EL CAMPO IDENTIFICACI&#211;N.</comment>
+            </column>
+        </many-to-one>
+        <property name="tipoUsuario" type="boolean">
+            <column name="TIPO_USUARIO" precision="1" scale="0" not-null="true">
+                <comment>INDICA 1 SI ES UN USUARIO DE AUTENTICACI&#211;N POR MEDIO DE PLATAFORMA LDAP Y 2 SI ES POR MEDIO DE AUTENTICACI&#211;N INTERNA.</comment>
+            </column>
+        </property>
+        <property name="activoDesde" type="date">
+            <column name="ACTIVO_DESDE" length="7" not-null="true">
+                <comment>INDICA LA FECHA A PARTIR DE LA CUAL EL USUARIO SE ACTIVA DENTRO DEL SISTEMA</comment>
+            </column>
+        </property>
+        <property name="activoHasta" type="date">
+            <column name="ACTIVO_HASTA" length="7" not-null="true">
+                <comment>INDICA LA FECHA DE FINALIZACI&#211;N DE VIGENCIA DEL USUARIO DENTRO DEL SISTEMA.</comment>
+            </column>
+        </property>
+        <property name="activo" type="boolean">
+            <column name="ACTIVO" precision="1" scale="0" not-null="true">
+                <comment>DETERMINA SI EL USUARIO SE ENCUENTRA ACTIVO EN EL SISTEMA</comment>
+            </column>
+        </property>
+        <set name="segRols" table="SEG_USUARIO_ROL" inverse="false" lazy="true" fetch="select">
+            <key>
+                <column name="ID_USUARIO" length="100" not-null="true">
+                    <comment>LLAVE PRIMARIA DE LA TABLA INTERMEDIA SEG_USUARIO_ROL</comment>
+                </column>
+            </key>
+            <many-to-many entity-name="entidades.SegRol">
+                <column name="ID_ROL" precision="22" scale="0" not-null="true">
+                    <comment>LLAVE PRIMARIA DE LA TABLA INTERMEDIA SEG_USUARIO_ROL</comment>
+                </column>
+            </many-to-many>
+        </set>
+        <one-to-one name="segUsuarioInterno" class="entidades.SegUsuarioInterno"></one-to-one>
+    </class>
+</hibernate-mapping>

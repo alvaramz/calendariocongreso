@@ -1,0 +1,58 @@
+
+/* 
+    Created on : 05/05/2016, 08:58:31 AM
+    Author     : Adrián Alvarado Ramírez
+*/
+
+body{
+    font-family: Helvetica,sans-serif !Important;    
+}
+
+.encabezado{
+    background-color: #be99c6 !Important;  
+    color: #ffffff;
+    height: 156px;
+    background-image: url("imagenes/logo-congreso.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    text-shadow: none;
+}
+
+.contenido{
+    background-color: #32907c !Important;     
+    color: #ffffff;
+    text-shadow: none;
+}
+
+.contenido h1{
+    text-align: center;    
+}
+
+.pie{
+    background-color: #ffffff !Important;
+    text-align: center;
+    
+}
+
+.ui-datagrid-header{
+    background-color: #0a513c !Important; 
+    text-shadow: none !Important;
+    font-size: 2em !Important;
+}
+
+@media all and (min-width: 460px) {
+    .encabezado{
+           background-image: url("imagenes/460p/logo-congreso.png");
+           height: 220px;           
+    }
+}
+
+@media all and (min-width: 780px) {
+    .encabezado{
+           background-image: url("imagenes/780p/logo-congreso.png");
+           height: 271px;           
+    }
+}
+
+
+

@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 27/06/2016 06:34:08 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="entidades.CongrSala" table="CONGR_SALA" schema="SIGEPRO" optimistic-lock="version">
+        <comment>ALMACENA LAS DISTINTAS SALAS DISPONIBLES EN UN CONGRESO, EN DONDE SE REALIZAR&#193;N DISTINTAS SESIONES DE TRABAJO</comment>
+        <id name="idSala" type="big_decimal">
+            <column name="ID_SALA" precision="22" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="congrCongreso" class="entidades.CongrCongreso" fetch="select">
+            <column name="ID_CONGRESO" precision="22" scale="0" not-null="true">
+                <comment>REPRESENTA EL CONGRESO AL CUAL EST&#193; ASOCIADO LA SALA.</comment>
+            </column>
+        </many-to-one>
+        <property name="nombre" type="string">
+            <column name="NOMBRE" length="100" not-null="true">
+                <comment>ALMACENA EL NOMBRE DE LA SALA DONDE SE REALIZAR&#193;N LAS SESIONES..</comment>
+            </column>
+        </property>
+        <property name="descripcion" type="string">
+            <column name="DESCRIPCION" length="150" not-null="true">
+                <comment>ALMACENA UNA DESCRIPCI&#211;N DE LA SALA DONDE SE REALIZAR&#193;N LAS SESIONES.</comment>
+            </column>
+        </property>
+        <set name="congrSesions" table="CONGR_SESION" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ID_SALA" precision="22" scale="0" not-null="true">
+                    <comment>REPRESENTA LA SALA EN LA CUAL SE LLEVAR&#193; A CABO LA SESI&#211;N.</comment>
+                </column>
+            </key>
+            <one-to-many class="entidades.CongrSesion" />
+        </set>
+    </class>
+</hibernate-mapping>

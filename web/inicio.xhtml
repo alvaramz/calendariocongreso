@@ -1,0 +1,104 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:pm="http://primefaces.org/mobile"     
+      xmlns:p="http://primefaces.org/ui">
+
+    <f:view renderKitId="PRIMEFACES_MOBILE" />
+
+    <h:head>
+        <title>#{calendarioBean.congreso.nombre}</title>
+        <link href="css/principal.css" rel="stylesheet" type="text/css"/>
+    </h:head>
+
+    <h:body>
+        <pm:page>
+            <pm:header title="" styleClass="encabezado">
+
+            </pm:header>
+
+            <pm:content styleClass="contenido">
+                <h1>#{calendarioBean.congreso.nombre}</h1>
+                <h:form id="frmPrincipal">
+                    <p:dataGrid id="sesiones26" var="ses26" value="#{calendarioBean.listaSesiones26}" columns="2" paginator="false" rows="9">
+                        <f:facet name="header">
+                            26 de Julio
+                        </f:facet>
+
+                        <p:panel header="#{ses26.descripcionSesion}" style="text-align:center">
+                            <h:panelGrid columns="2" style="width:100%">
+                                                            
+                                 <h:outputLabel value="Moderador:"></h:outputLabel>
+                                 <h:outputText value="#{ses26.congrModerador.nombre} #{ses26.congrModerador.apellidos}" />
+                                
+                                <h:outputLabel value="Hora de Inicio:"></h:outputLabel>
+                                <h:outputText value="#{ses26.fechaDesde}">
+                                    <f:convertDateTime pattern="hh:mm a" locale="es_CR" timeZone="America/Costa_Rica" />
+                                </h:outputText>
+                                
+                                <h:outputLabel value="Hora de Fin"></h:outputLabel>
+                                <h:outputText value="#{ses26.fechaHasta}">
+                                    <f:convertDateTime pattern="hh:mm a" locale="es_CR" timeZone="America/Costa_Rica" />
+                                </h:outputText>
+                                
+                            </h:panelGrid>
+                        </p:panel>
+                    </p:dataGrid>
+                    
+                     <p:dataGrid id="sesiones27" var="ses27" value="#{calendarioBean.listaSesiones27}" columns="2" paginator="false" rows="9">
+                        <f:facet name="header">
+                            27 de Julio
+                        </f:facet>
+
+                          <p:panel header="#{ses27.descripcionSesion}" style="text-align:center">
+                            <h:panelGrid columns="2" style="width:100%">
+                                                            
+                                 <h:outputLabel value="Moderador:"></h:outputLabel>
+                                 <h:outputText value="#{ses27.congrModerador.nombre} #{ses27.congrModerador.apellidos}" />
+                                
+                                <h:outputLabel value="Hora de Inicio:"></h:outputLabel>
+                                <h:outputText value="#{ses27.fechaDesde}">
+                                    <f:convertDateTime pattern="hh:mm a" locale="es_CR" timeZone="America/Costa_Rica" />
+                                </h:outputText>
+                                
+                                <h:outputLabel value="Hora de Fin"></h:outputLabel>
+                                <h:outputText value="#{ses27.fechaHasta}">
+                                    <f:convertDateTime pattern="hh:mm a" locale="es_CR" timeZone="America/Costa_Rica" />
+                                </h:outputText>
+                                
+                            </h:panelGrid>
+                        </p:panel>
+                    </p:dataGrid>
+                     <p:dataGrid id="sesiones28" var="ses28" value="#{calendarioBean.listaSesiones28}" columns="2" paginator="false" rows="9">
+                        <f:facet name="header">
+                            28 de Julio
+                        </f:facet>
+
+                        <p:panel header="#{ses28.nombreTrabajo}" style="text-align:center">
+                            <h:panelGrid columns="2" style="width:100%">
+                                
+                                <h:outputLabel value="Eje temático:"></h:outputLabel>
+                                <h:outputText value="#{ses28.ejetematico}" />  
+                                
+                                <h:outputLabel value="Hora:"></h:outputLabel>
+                                <h:outputText value="#{ses28.horas}" />
+                                
+                                <h:outputLabel value="Autor:"></h:outputLabel>
+                                <h:outputText value="#{ses28.autores}" />
+                                
+                            </h:panelGrid>
+                        </p:panel>
+                    </p:dataGrid>
+                </h:form> 
+            </pm:content>
+
+            <pm:footer title="" styleClass="pie">
+                2016 - Instituto de Investigación en Educación<br />
+                Universidad de Costa Rica
+            </pm:footer>
+        </pm:page>
+    </h:body>
+</html>
+
