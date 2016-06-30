@@ -29,72 +29,96 @@
 
                         <p:panel header="#{ses26.descripcionSesion}" style="text-align:center">
                             <h:panelGrid columns="2" style="width:100%">
-                                                            
-                                 <h:outputLabel value="Moderador:"></h:outputLabel>
-                                 <h:outputText value="#{ses26.congrModerador.nombre} #{ses26.congrModerador.apellidos}" />
-                                
+
+                                <h:outputLabel value="Moderador:"></h:outputLabel>
+                                <h:outputText value="#{ses26.congrModerador.nombre} #{ses26.congrModerador.apellidos}" />
+
                                 <h:outputLabel value="Hora de Inicio:"></h:outputLabel>
                                 <h:outputText value="#{ses26.fechaDesde}">
                                     <f:convertDateTime pattern="hh:mm a" locale="es_CR" timeZone="America/Costa_Rica" />
                                 </h:outputText>
-                                
+
                                 <h:outputLabel value="Hora de Fin"></h:outputLabel>
                                 <h:outputText value="#{ses26.fechaHasta}">
                                     <f:convertDateTime pattern="hh:mm a" locale="es_CR" timeZone="America/Costa_Rica" />
                                 </h:outputText>
-                                
+
+                                <p:commandButton update="@form:detalleEvento" oncomplete="PF('ventanaDetalle').show()" icon="ui-icon-search" styleClass="ui-btn-inline">
+                                    <h:outputText styleClass="ui-icon ui-icon-search" style="margin:0 auto;" />
+                                    <f:setPropertyActionListener value="#{ses26}" target="#{calendarioBean.sesionSeleccionada}" />
+                                </p:commandButton>
+
                             </h:panelGrid>
                         </p:panel>
                     </p:dataGrid>
-                    
-                     <p:dataGrid id="sesiones27" var="ses27" value="#{calendarioBean.listaSesiones27}" columns="2" paginator="false" rows="9">
+
+                    <p:dataGrid id="sesiones27" var="ses27" value="#{calendarioBean.listaSesiones27}" columns="2" paginator="false" rows="9">
                         <f:facet name="header">
                             27 de Julio
                         </f:facet>
 
-                          <p:panel header="#{ses27.descripcionSesion}" style="text-align:center">
+                        <p:panel header="#{ses27.descripcionSesion}" style="text-align:center">
                             <h:panelGrid columns="2" style="width:100%">
-                                                            
-                                 <h:outputLabel value="Moderador:"></h:outputLabel>
-                                 <h:outputText value="#{ses27.congrModerador.nombre} #{ses27.congrModerador.apellidos}" />
-                                
+
+                                <h:outputLabel value="Moderador:"></h:outputLabel>
+                                <h:outputText value="#{ses27.congrModerador.nombre} #{ses27.congrModerador.apellidos}" />
+
                                 <h:outputLabel value="Hora de Inicio:"></h:outputLabel>
                                 <h:outputText value="#{ses27.fechaDesde}">
                                     <f:convertDateTime pattern="hh:mm a" locale="es_CR" timeZone="America/Costa_Rica" />
                                 </h:outputText>
-                                
+
                                 <h:outputLabel value="Hora de Fin"></h:outputLabel>
                                 <h:outputText value="#{ses27.fechaHasta}">
                                     <f:convertDateTime pattern="hh:mm a" locale="es_CR" timeZone="America/Costa_Rica" />
                                 </h:outputText>
-                                
+
                             </h:panelGrid>
                         </p:panel>
                     </p:dataGrid>
-                     <p:dataGrid id="sesiones28" var="ses28" value="#{calendarioBean.listaSesiones28}" columns="2" paginator="false" rows="9">
+                    <p:dataGrid id="sesiones28" var="ses28" value="#{calendarioBean.listaSesiones28}" columns="2" paginator="false" rows="9">
                         <f:facet name="header">
                             28 de Julio
                         </f:facet>
 
                         <p:panel header="#{ses28.descripcionSesion}" style="text-align:center">
                             <h:panelGrid columns="2" style="width:100%">
-                                                            
-                                 <h:outputLabel value="Moderador:"></h:outputLabel>
-                                 <h:outputText value="#{ses28.congrModerador.nombre} #{ses28.congrModerador.apellidos}" />
-                                
+
+                                <h:outputLabel value="Moderador:"></h:outputLabel>
+                                <h:outputText value="#{ses28.congrModerador.nombre} #{ses28.congrModerador.apellidos}" />
+
                                 <h:outputLabel value="Hora de Inicio:"></h:outputLabel>
                                 <h:outputText value="#{ses28.fechaDesde}">
                                     <f:convertDateTime pattern="hh:mm a" locale="es_CR" timeZone="America/Costa_Rica" />
                                 </h:outputText>
-                                
+
                                 <h:outputLabel value="Hora de Fin"></h:outputLabel>
                                 <h:outputText value="#{ses28.fechaHasta}">
                                     <f:convertDateTime pattern="hh:mm a" locale="es_CR" timeZone="America/Costa_Rica" />
                                 </h:outputText>
-                                
+
                             </h:panelGrid>
                         </p:panel>
                     </p:dataGrid>
+
+                    <p:dialog header="Detalle de la sesión" widgetVar="ventanaDetalle" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+                        <p:outputPanel id="detalleEvento">
+                            <p:panelGrid  columns="1" rendered="#{not empty calendarioBean.sesionSeleccionada}" styleClass="ventanaDetalleSesion">
+
+
+                                <h:outputText value="Moderador:" />
+                                <h:outputText value="#{calendarioBean.sesionSeleccionada.congrModerador.nombre} #{calendarioBean.sesionSeleccionada.congrModerador.apellidos}" />
+
+                                <div id="contenidoSala">
+                                    <h2>Información de la sala</h2>
+                                    <p>Esta sesión se llevará a cabo en la sala #{calendarioBean.sesionSeleccionada.congrSala.nombre}</p>
+                                    <h3>Detalle de la sala</h3>
+                                    <h:outputText value="#{calendarioBean.sesionSeleccionada.congrSala.nombre}" />
+                                </div>
+
+                            </p:panelGrid>
+                        </p:outputPanel>
+                    </p:dialog>
                 </h:form> 
             </pm:content>
 

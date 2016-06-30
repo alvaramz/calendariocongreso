@@ -40,6 +40,13 @@ body{
     font-size: 2em !Important;
 }
 
+.ui-panel-m-titlebar{
+    border-style: none !Important;
+    border-width: 0 !Important;
+    border-top-left-radius: 0 !Important;
+    border-top-right-radius: 0 !Important;
+}
+
 @media all and (min-width: 460px) {
     .encabezado{
            background-image: url("imagenes/460p/logo-congreso.png");

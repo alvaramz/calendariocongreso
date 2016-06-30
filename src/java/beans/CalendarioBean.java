@@ -32,6 +32,8 @@ public class CalendarioBean implements Serializable {
     private List<CongrSesion> listaSesiones27;
     private List<CongrSesion> listaSesiones28;
     private CongrCongreso congreso;
+    
+    private CongrSesion sesionSeleccionada;
 
     // Objetos para Acceder a datos.
     private AccesoCalendario accesoCalendario;
@@ -104,6 +106,20 @@ public class CalendarioBean implements Serializable {
      */
     public void setCongreso(CongrCongreso congreso) {
         this.congreso = congreso;
+    }
+
+    /**
+     * @return the sesionSeleccionada
+     */
+    public CongrSesion getSesionSeleccionada() {
+        return sesionSeleccionada;
+    }
+
+    /**
+     * @param sesionSeleccionada the sesionSeleccionada to set
+     */
+    public void setSesionSeleccionada(CongrSesion sesionSeleccionada) {
+        this.sesionSeleccionada = sesionSeleccionada;
     }
 
   

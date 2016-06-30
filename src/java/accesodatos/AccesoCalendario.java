@@ -58,6 +58,8 @@ public class AccesoCalendario {
             
             for(CongrSesion congreso : sesiones){
                 Hibernate.initialize(congreso.getCongrModerador());
+                Hibernate.initialize(congreso.getCongrSala());
+                Hibernate.initialize(congreso.getCongrTrabajoAcademicos());
             }
         } catch (Exception e) {
             System.out.println(e.toString());
