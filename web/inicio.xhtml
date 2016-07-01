@@ -10,7 +10,7 @@
 
     <h:head>
         <title>#{calendarioBean.congreso.nombre}</title>
-        <link href="css/principal.css" rel="stylesheet" type="text/css"/>
+        <link href="css/principal.css" rel="stylesheet" type="text/css"/>        
     </h:head>
 
     <h:body>
@@ -22,7 +22,7 @@
             <pm:content styleClass="contenido">
                 <h1>#{calendarioBean.congreso.nombre}</h1>
                 <h:form id="frmPrincipal">
-                    <p:dataGrid id="sesiones26" var="ses26" value="#{calendarioBean.listaSesiones26}" columns="2" paginator="false" rows="9">
+                    <p:dataGrid id="sesiones26" var="ses26" value="#{calendarioBean.listaSesiones26}" columns="3" paginator="false">
                         <f:facet name="header">
                             26 de Julio
                         </f:facet>
@@ -42,17 +42,15 @@
                                 <h:outputText value="#{ses26.fechaHasta}">
                                     <f:convertDateTime pattern="hh:mm a" locale="es_CR" timeZone="America/Costa_Rica" />
                                 </h:outputText>
-
-                                <p:commandButton update="@form:detalleEvento" oncomplete="PF('ventanaDetalle').show()" icon="ui-icon-search" styleClass="ui-btn-inline">
-                                    <h:outputText styleClass="ui-icon ui-icon-search" style="margin:0 auto;" />
-                                    <f:setPropertyActionListener value="#{ses26}" target="#{calendarioBean.sesionSeleccionada}" />
-                                </p:commandButton>
-
                             </h:panelGrid>
+                            <p:commandButton update="@form:detalleEvento" oncomplete="PF('ventanaDetalle').show()" icon="ui-icon-search" styleClass="ui-btn-inline">
+                                <h:outputText styleClass="ui-icon ui-icon-search" style="margin:0 auto;" />
+                                <f:setPropertyActionListener value="#{ses26}" target="#{calendarioBean.sesionSeleccionada}" />
+                            </p:commandButton>
                         </p:panel>
                     </p:dataGrid>
 
-                    <p:dataGrid id="sesiones27" var="ses27" value="#{calendarioBean.listaSesiones27}" columns="2" paginator="false" rows="9">
+                    <p:dataGrid id="sesiones27" var="ses27" value="#{calendarioBean.listaSesiones27}" columns="3" paginator="false">
                         <f:facet name="header">
                             27 de Julio
                         </f:facet>
@@ -74,9 +72,13 @@
                                 </h:outputText>
 
                             </h:panelGrid>
+                            <p:commandButton update="@form:detalleEvento" oncomplete="PF('ventanaDetalle').show()" icon="ui-icon-search" styleClass="ui-btn-inline">
+                                <h:outputText styleClass="ui-icon ui-icon-search" style="margin:0 auto;" />
+                                <f:setPropertyActionListener value="#{ses27}" target="#{calendarioBean.sesionSeleccionada}" />
+                            </p:commandButton>
                         </p:panel>
                     </p:dataGrid>
-                    <p:dataGrid id="sesiones28" var="ses28" value="#{calendarioBean.listaSesiones28}" columns="2" paginator="false" rows="9">
+                    <p:dataGrid id="sesiones28" var="ses28" value="#{calendarioBean.listaSesiones28}" columns="3" paginator="false">
                         <f:facet name="header">
                             28 de Julio
                         </f:facet>
@@ -98,6 +100,10 @@
                                 </h:outputText>
 
                             </h:panelGrid>
+                            <p:commandButton update="@form:detalleEvento" oncomplete="PF('ventanaDetalle').show()" icon="ui-icon-search" styleClass="ui-btn-inline">
+                                <h:outputText styleClass="ui-icon ui-icon-search" style="margin:0 auto;" />
+                                <f:setPropertyActionListener value="#{ses28}" target="#{calendarioBean.sesionSeleccionada}" />
+                            </p:commandButton>
                         </p:panel>
                     </p:dataGrid>
 
@@ -113,8 +119,11 @@
                                     <h2>Información de la sala</h2>
                                     <p>Esta sesión se llevará a cabo en la sala #{calendarioBean.sesionSeleccionada.congrSala.nombre}</p>
                                     <h3>Detalle de la sala</h3>
-                                    <h:outputText value="#{calendarioBean.sesionSeleccionada.congrSala.nombre}" />
+                                    <h:outputText value="#{calendarioBean.sesionSeleccionada.congrSala.descripcion}" />
                                 </div>
+                                <p:panelGrid  columns="1" styleClass="trabajosAcademicos">
+                                   Hola
+                                </p:panelGrid>
 
                             </p:panelGrid>
                         </p:outputPanel>

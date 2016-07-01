@@ -27,13 +27,13 @@ public class AccesoCalendario {
 
         switch (dia) {
             case 26:
-                sesiones = obtenerSesiones26();
+                sesiones = obtenerSesiones("26/07/2016","27/07/2016");
                 break;
             case 27:
-                sesiones = obtenerSesiones27();
+                sesiones = obtenerSesiones("27/07/2016","28/07/2016");
                 break;
             case 28:
-                sesiones = obtenerSesiones28();
+                sesiones = obtenerSesiones("28/07/2016","29/07/2016");
                 break;
             default:
                 System.out.println("Día inválido");
@@ -42,85 +42,34 @@ public class AccesoCalendario {
         return sesiones;
     }
 
-    private List<CongrSesion> obtenerSesiones26() {
+    private List<CongrSesion> obtenerSesiones(String fechaInicialS, String fechaFinalS) {
         List<CongrSesion> sesiones = new ArrayList<>();
 
-        Session sesion;
-        sesion = HibernateUtil.getSessionFactory().openSession();
+        Session session;
+        session = HibernateUtil.getSessionFactory().openSession();
 
         try {
-            Date fechaInicial = FechaUtil.convertirFecha("26/07/2016");
-            Date fechaFinal = FechaUtil.convertirFecha("27/07/2016");
-            Query q = sesion.createQuery("from CongrSesion where fechaDesde >= :fechaInicial and fechaHasta < :fechaFinal order by fechaDesde asc");
+            Date fechaInicial = FechaUtil.convertirFecha(fechaInicialS);
+            Date fechaFinal = FechaUtil.convertirFecha(fechaFinalS);
+            Query q = session.createQuery("from CongrSesion where fechaDesde >= :fechaInicial and fechaHasta < :fechaFinal order by fechaDesde asc");
             q.setDate("fechaInicial", fechaInicial);
             q.setDate("fechaFinal", fechaFinal);
             sesiones = (List<CongrSesion>) q.list();
-            
-            for(CongrSesion congreso : sesiones){
+
+            for (CongrSesion congreso : sesiones) {
                 Hibernate.initialize(congreso.getCongrModerador());
                 Hibernate.initialize(congreso.getCongrSala());
                 Hibernate.initialize(congreso.getCongrTrabajoAcademicos());
             }
         } catch (Exception e) {
             System.out.println(e.toString());
-        }
-
-        sesion.close();
-
-        return sesiones;
-    }
-
-    private List<CongrSesion> obtenerSesiones27() {
-        List<CongrSesion> sesiones = new ArrayList<>();
-
-        
-        Session sesion;
-        sesion = HibernateUtil.getSessionFactory().openSession();
-
-        try {
-            Date fechaInicial = FechaUtil.convertirFecha("27/07/2016");
-            Date fechaFinal = FechaUtil.convertirFecha("28/07/2016");
-            Query q = sesion.createQuery("from CongrSesion where fechaDesde >= :fechaInicial and fechaHasta < :fechaFinal order by fechaDesde asc");
-            q.setDate("fechaInicial", fechaInicial);
-            q.setDate("fechaFinal", fechaFinal);
-            sesiones = (List<CongrSesion>) q.list();
-            
-            for(CongrSesion congreso : sesiones){
-                Hibernate.initialize(congreso.getCongrModerador());
+        } finally {
+            if (session.isOpen()) {
+                session.close();
             }
-        } catch (Exception e) {
-            System.out.println(e.toString());
         }
 
-        sesion.close();
-        
         return sesiones;
-    }
-
-    private List<CongrSesion> obtenerSesiones28() {
-        List<CongrSesion> sesiones = new ArrayList<>();
-        
-        Session sesion;
-        sesion = HibernateUtil.getSessionFactory().openSession();
-
-        try {
-            Date fechaInicial = FechaUtil.convertirFecha("28/07/2016");
-            Date fechaFinal = FechaUtil.convertirFecha("29/07/2016");
-            Query q = sesion.createQuery("from CongrSesion where fechaDesde >= :fechaInicial and fechaHasta < :fechaFinal order by fechaDesde asc");
-            q.setDate("fechaInicial", fechaInicial);
-            q.setDate("fechaFinal", fechaFinal);
-            sesiones = (List<CongrSesion>) q.list();
-            
-            for(CongrSesion congreso : sesiones){
-                Hibernate.initialize(congreso.getCongrModerador());
-            }
-        } catch (Exception e) {
-            System.out.println(e.toString());
-        }
-
-        sesion.close();
-
-        return sesiones;
-    }
+    }   
 
 }
