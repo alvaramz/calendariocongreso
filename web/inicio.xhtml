@@ -121,10 +121,14 @@
                                     <h3>Detalle de la sala</h3>
                                     <h:outputText value="#{calendarioBean.sesionSeleccionada.congrSala.descripcion}" />
                                 </div>
-                                <p:panelGrid  columns="1" styleClass="trabajosAcademicos">
-                                   Hola
-                                </p:panelGrid>
-
+                                <div id="trabajos">
+                                    <br />
+                                    <h2>Trabajos Académicos</h2>
+                                    <p:dataGrid id="trabajosAcademicos" var="trabajo" value="#{calendarioBean.trabajosAcademicos}" columns="1" paginator="false" emptyMessage="No hay trabajos académicos asociados">
+                                        <p>Nombre del trabajo académico: #{trabajo.nombreTrabajo}</p>
+                                        <p>Eje temático: #{trabajo.congrEjeTematico.nombre}</p>
+                                    </p:dataGrid>
+                                </div>
                             </p:panelGrid>
                         </p:outputPanel>
                     </p:dialog>

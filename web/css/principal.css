@@ -22,6 +22,7 @@ body{
     background-color: #32907c !Important;     
     color: #ffffff;
     text-shadow: none;
+    padding: 0;
 }
 
 .contenido h1{
@@ -31,7 +32,7 @@ body{
 .pie{
     background-color: #ffffff !Important;
     text-align: center;
-    
+
 }
 
 .ui-datagrid-header{
@@ -45,19 +46,35 @@ body{
     border-width: 0 !Important;
     border-top-left-radius: 0 !Important;
     border-top-right-radius: 0 !Important;
+    background-color: #be99c6 !Important;
+    color:white !Important;
+    text-shadow: none !Important;
+}
+
+.ui-panel-m-content{
+    height: 100% !Important;
+    /*border-style: none !Important;*/
+    border-width: 1px !Important;
+    border-bottom-left-radius: 0 !Important;
+    border-bottom-right-radius: 0 !Important;
+}
+
+form{
+    margin: 0 !Important;
+    background-color: white;
 }
 
 @media all and (min-width: 460px) {
     .encabezado{
-           background-image: url("imagenes/460p/logo-congreso.png");
-           height: 220px;           
+        background-image: url("imagenes/460p/logo-congreso.png");
+        height: 220px;           
     }
 }
 
 @media all and (min-width: 780px) {
     .encabezado{
-           background-image: url("imagenes/780p/logo-congreso.png");
-           height: 271px;           
+        background-image: url("imagenes/780p/logo-congreso.png");
+        height: 271px;           
     }
 }
 

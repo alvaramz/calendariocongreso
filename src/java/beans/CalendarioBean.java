@@ -7,8 +7,10 @@ package beans;
 
 import accesodatos.AccesoCalendario;
 import accesodatos.AccesoCongreso;
+import accesodatos.AccesoTrabajosAcademicos;
 import entidades.CongrCongreso;
 import entidades.CongrSesion;
+import entidades.CongrTrabajoAcademico;
 import java.io.Serializable;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
@@ -50,6 +52,14 @@ public class CalendarioBean implements Serializable {
     private void cargarCongreso(){
         AccesoCongreso accesoCongreso = new AccesoCongreso();
         congreso = accesoCongreso.obtenerCongreso(ID_CONGRESO);
+    }
+    
+    public List<CongrTrabajoAcademico> getTrabajosAcademicos(){
+        if(sesionSeleccionada != null){
+            return new AccesoTrabajosAcademicos().obtenerTrabajosAcademicos(sesionSeleccionada.getIdSesion());
+        }else{
+            return null;
+        }
     }
 
     /**
