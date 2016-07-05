@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 27/06/2016 06:34:08 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated 04/07/2016 10:19:46 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="entidades.CongrModerador" table="CONGR_MODERADOR" schema="SIGEPRO" optimistic-lock="version">
         <comment>ALMACENA LOS DISTINTOS MODERADORES DE SESIONES DE CONGRESOS</comment>
@@ -31,7 +31,7 @@
         </property>
         <set name="congrSesions" table="CONGR_SESION" inverse="true" lazy="true" fetch="select">
             <key>
-                <column name="ID_MODERADOR" precision="22" scale="0" not-null="true">
+                <column name="ID_MODERADOR" precision="22" scale="0">
                     <comment>REPRESENTA EL MODERADOR ASIGNADO A DICHA SESI&#211;N.</comment>
                 </column>
             </key>

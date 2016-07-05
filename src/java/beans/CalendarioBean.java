@@ -8,11 +8,15 @@ package beans;
 import accesodatos.AccesoCalendario;
 import accesodatos.AccesoCongreso;
 import accesodatos.AccesoTrabajosAcademicos;
+import entidades.CongrAutor;
 import entidades.CongrCongreso;
 import entidades.CongrSesion;
 import entidades.CongrTrabajoAcademico;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 
@@ -24,7 +28,7 @@ import javax.faces.bean.RequestScoped;
 @ManagedBean(name = "calendarioBean")
 @RequestScoped
 public class CalendarioBean implements Serializable {
-    
+
     // Datos estáticos.
     int ID_CONGRESO = 1;
 
@@ -34,7 +38,7 @@ public class CalendarioBean implements Serializable {
     private List<CongrSesion> listaSesiones27;
     private List<CongrSesion> listaSesiones28;
     private CongrCongreso congreso;
-    
+
     private CongrSesion sesionSeleccionada;
 
     // Objetos para Acceder a datos.
@@ -48,18 +52,35 @@ public class CalendarioBean implements Serializable {
         listaSesiones28 = accesoCalendario.obtenerSesiones(28);
         cargarCongreso();
     }
-    
-    private void cargarCongreso(){
+
+    private void cargarCongreso() {
         AccesoCongreso accesoCongreso = new AccesoCongreso();
         congreso = accesoCongreso.obtenerCongreso(ID_CONGRESO);
     }
-    
-    public List<CongrTrabajoAcademico> getTrabajosAcademicos(){
-        if(sesionSeleccionada != null){
+
+    public List<CongrTrabajoAcademico> getTrabajosAcademicos() {
+        if (sesionSeleccionada != null) {
             return new AccesoTrabajosAcademicos().obtenerTrabajosAcademicos(sesionSeleccionada.getIdSesion());
-        }else{
+        } else {
             return null;
         }
+    }
+
+    /**
+     * Obtiene los autores de un trabajo académico.
+     *
+     * @param trabajo El trabajo académico cuyos autores se cargan.
+     * @return La lista de autores.
+     */
+    public List<CongrAutor> getAutores(CongrTrabajoAcademico trabajo) {
+        List<CongrAutor> autores = new ArrayList<>();
+        Set set = trabajo.getCongrAutors();
+
+        for (Iterator iter = set.iterator(); iter.hasNext();) {
+            CongrAutor autor = (CongrAutor) iter.next();
+            autores.add(autor);
+        }
+        return autores;
     }
 
     /**
@@ -131,7 +152,5 @@ public class CalendarioBean implements Serializable {
     public void setSesionSeleccionada(CongrSesion sesionSeleccionada) {
         this.sesionSeleccionada = sesionSeleccionada;
     }
-
-  
 
 }

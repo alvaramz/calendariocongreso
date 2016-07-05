@@ -127,7 +127,12 @@
                                     <p:dataGrid id="trabajosAcademicos" var="trabajo" value="#{calendarioBean.trabajosAcademicos}" columns="1" paginator="false" emptyMessage="No hay trabajos académicos asociados">
                                         <p>Nombre del trabajo académico: #{trabajo.nombreTrabajo}</p>
                                         <p>Eje temático: #{trabajo.congrEjeTematico.nombre}</p>
-                                    </p:dataGrid>
+                                        <h3>Autores</h3>
+                                        <p:dataGrid id="autores" var="autor" value="#{calendarioBean.getAutores(trabajo)}" columns="1" paginator="false" emptyMessage="No hay autores asociados">
+                                            <p>#{autor.nombre} #{autor.apellidos}</p>
+                                        </p:dataGrid>
+                                        <hr />
+                                    </p:dataGrid>                                    
                                 </div>
                             </p:panelGrid>
                         </p:outputPanel>

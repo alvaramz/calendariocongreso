@@ -5,12 +5,11 @@ import db.HibernateUtil;
 import entidades.CongrTrabajoAcademico;
 import java.math.BigDecimal;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import org.hibernate.Hibernate;
 import org.hibernate.Query;
 import org.hibernate.Session;
-import utilitario.FechaUtil;
+
 
 /**
  *
@@ -33,6 +32,7 @@ public class AccesoTrabajosAcademicos {
             for (CongrTrabajoAcademico trabajo : trabajosAcademicos) {                
                 Hibernate.initialize(trabajo.getCongrEjeTematico());               
                 Hibernate.initialize(trabajo.getCongrTipoTrabajoAcademico());               
+                Hibernate.initialize(trabajo.getCongrAutors());
             }
         } catch (Exception e) {
             System.out.println(e.toString());

@@ -1,5 +1,5 @@
 package entidades;
-// Generated 27/06/2016 06:34:06 PM by Hibernate Tools 4.3.1
+// Generated 04/07/2016 10:19:44 PM by Hibernate Tools 4.3.1
 
 
 import java.math.BigDecimal;
@@ -20,22 +20,21 @@ public class CongrSesion  implements java.io.Serializable {
      private Date fechaDesde;
      private Date fechaHasta;
      private String descripcionSesion;
+     private Byte tipoSesion;
      private Set congrTrabajoAcademicos = new HashSet(0);
 
     public CongrSesion() {
     }
 
 	
-    public CongrSesion(BigDecimal idSesion, CongrCongreso congrCongreso, CongrModerador congrModerador, CongrSala congrSala, Date fechaDesde, Date fechaHasta, String descripcionSesion) {
+    public CongrSesion(BigDecimal idSesion, CongrCongreso congrCongreso, Date fechaDesde, Date fechaHasta, String descripcionSesion) {
         this.idSesion = idSesion;
         this.congrCongreso = congrCongreso;
-        this.congrModerador = congrModerador;
-        this.congrSala = congrSala;
         this.fechaDesde = fechaDesde;
         this.fechaHasta = fechaHasta;
         this.descripcionSesion = descripcionSesion;
     }
-    public CongrSesion(BigDecimal idSesion, CongrCongreso congrCongreso, CongrModerador congrModerador, CongrSala congrSala, Date fechaDesde, Date fechaHasta, String descripcionSesion, Set congrTrabajoAcademicos) {
+    public CongrSesion(BigDecimal idSesion, CongrCongreso congrCongreso, CongrModerador congrModerador, CongrSala congrSala, Date fechaDesde, Date fechaHasta, String descripcionSesion, Byte tipoSesion, Set congrTrabajoAcademicos) {
        this.idSesion = idSesion;
        this.congrCongreso = congrCongreso;
        this.congrModerador = congrModerador;
@@ -43,6 +42,7 @@ public class CongrSesion  implements java.io.Serializable {
        this.fechaDesde = fechaDesde;
        this.fechaHasta = fechaHasta;
        this.descripcionSesion = descripcionSesion;
+       this.tipoSesion = tipoSesion;
        this.congrTrabajoAcademicos = congrTrabajoAcademicos;
     }
    
@@ -94,6 +94,13 @@ public class CongrSesion  implements java.io.Serializable {
     
     public void setDescripcionSesion(String descripcionSesion) {
         this.descripcionSesion = descripcionSesion;
+    }
+    public Byte getTipoSesion() {
+        return this.tipoSesion;
+    }
+    
+    public void setTipoSesion(Byte tipoSesion) {
+        this.tipoSesion = tipoSesion;
     }
     public Set getCongrTrabajoAcademicos() {
         return this.congrTrabajoAcademicos;
