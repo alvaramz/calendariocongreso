@@ -29,6 +29,6 @@
     <mapping resource="entidades/CongrSala.hbm.xml"/>
     <mapping resource="entidades/SegUsuario.hbm.xml"/>
     <mapping resource="entidades/ExpPersona.hbm.xml"/>
-    <mapping resource="entidades/AdmTipoIdentificacion.hbm.xml"/>    
+    <mapping resource="entidades/AdmTipoIdentificacion.hbm.xml"/>     
   </session-factory>
 </hibernate-configuration>
