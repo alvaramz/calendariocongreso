@@ -57,6 +57,7 @@ body{
     border-width: 1px !Important;
     border-bottom-left-radius: 0 !Important;
     border-bottom-right-radius: 0 !Important;
+    border-bottom: none !Important;
 }
 
 form{

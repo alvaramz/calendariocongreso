@@ -43,7 +43,7 @@
                                     <f:convertDateTime pattern="hh:mm a" locale="es_CR" timeZone="America/Costa_Rica" />
                                 </h:outputText>
                             </h:panelGrid>
-                            <p:commandButton update="@form:detalleEvento" oncomplete="PF('ventanaDetalle').show()" icon="ui-icon-search" styleClass="ui-btn-inline">
+                            <p:commandButton update="@form:detalleEvento" oncomplete="PF('ventanaDetalle').show()" icon="ui-icon-search" styleClass="ui-btn-inline" rendered="#{ses26.tipoSesion == 0 or ses26.tipoSesion == 1}">
                                 <h:outputText styleClass="ui-icon ui-icon-search" style="margin:0 auto;" />
                                 <f:setPropertyActionListener value="#{ses26}" target="#{calendarioBean.sesionSeleccionada}" />
                             </p:commandButton>
@@ -72,7 +72,7 @@
                                 </h:outputText>
 
                             </h:panelGrid>
-                            <p:commandButton update="@form:detalleEvento" oncomplete="PF('ventanaDetalle').show()" icon="ui-icon-search" styleClass="ui-btn-inline">
+                            <p:commandButton update="@form:detalleEvento" oncomplete="PF('ventanaDetalle').show()" icon="ui-icon-search" styleClass="ui-btn-inline" rendered="#{ses27.tipoSesion == 0 or ses27.tipoSesion == 1}">
                                 <h:outputText styleClass="ui-icon ui-icon-search" style="margin:0 auto;" />
                                 <f:setPropertyActionListener value="#{ses27}" target="#{calendarioBean.sesionSeleccionada}" />
                             </p:commandButton>
@@ -100,7 +100,7 @@
                                 </h:outputText>
 
                             </h:panelGrid>
-                            <p:commandButton update="@form:detalleEvento" oncomplete="PF('ventanaDetalle').show()" icon="ui-icon-search" styleClass="ui-btn-inline">
+                            <p:commandButton update="@form:detalleEvento" oncomplete="PF('ventanaDetalle').show()" icon="ui-icon-search" styleClass="ui-btn-inline" rendered="#{ses28.tipoSesion == 0 or ses28.tipoSesion == 1}">
                                 <h:outputText styleClass="ui-icon ui-icon-search" style="margin:0 auto;" />
                                 <f:setPropertyActionListener value="#{ses28}" target="#{calendarioBean.sesionSeleccionada}" />
                             </p:commandButton>
@@ -121,11 +121,13 @@
                                     <h3>Detalle de la sala</h3>
                                     <h:outputText value="#{calendarioBean.sesionSeleccionada.congrSala.descripcion}" />
                                 </div>
-                                <div id="trabajos">
+                                <p:outputPanel rendered="#{calendarioBean.sesionSeleccionada.tipoSesion == 0}">
                                     <br />
                                     <h2>Trabajos Académicos</h2>
                                     <p:dataGrid id="trabajosAcademicos" var="trabajo" value="#{calendarioBean.trabajosAcademicos}" columns="1" paginator="false" emptyMessage="No hay trabajos académicos asociados">
-                                        <p>Nombre del trabajo académico: #{trabajo.nombreTrabajo}</p>
+                                        <p>
+                                            Nombre del trabajo académico: <a href="http://congresoctg.ucr.ac.cr/memoria/?actividad=#{trabajo.idTrabajoAcademico}&amp;ejeTematico=#{trabajo.congrEjeTematico.idEjeTematico}" target="_blank">#{trabajo.nombreTrabajo}</a>
+                                         </p>
                                         <p>Eje temático: #{trabajo.congrEjeTematico.nombre}</p>
                                         <h3>Autores</h3>
                                         <p:dataGrid id="autores" var="autor" value="#{calendarioBean.getAutores(trabajo)}" columns="1" paginator="false" emptyMessage="No hay autores asociados">
@@ -133,7 +135,7 @@
                                         </p:dataGrid>
                                         <hr />
                                     </p:dataGrid>                                    
-                                </div>
+                                </p:outputPanel>
                             </p:panelGrid>
                         </p:outputPanel>
                     </p:dialog>
