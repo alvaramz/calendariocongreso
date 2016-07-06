@@ -60,6 +60,10 @@ body{
     border-bottom: none !Important;
 }
 
+.ui-panel-m{
+    
+}
+
 form{
     margin: 0 !Important;
     background-color: white;
