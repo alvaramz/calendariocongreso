@@ -27,11 +27,11 @@
                             26 de Julio
                         </f:facet>
 
-                        <p:panel header="#{ses26.descripcionSesion}" style="text-align:center">
-                            <p>#{ses26.descripcionSesion}</p>
+                        <p:panel header="#{ses26.descripcionSesion}" style="text-align:center"> 
+                            <h2>#{ses26.congrSala.nombre}</h2>
                             <h:panelGrid columns="2" style="width:100%">
 
-                                <h:outputLabel value="Moderador:" rendered="#{ses26.tipoSesion == 0}"></h:outputLabel>
+                                <h:outputLabel value="Moderación:" rendered="#{ses26.tipoSesion == 0}"></h:outputLabel>
                                 <h:outputText value="#{ses26.congrModerador.nombre} #{ses26.congrModerador.apellidos}" rendered="#{ses26.tipoSesion == 0}" />
 
                                 <h:outputLabel value="Hora de Inicio:"></h:outputLabel>
@@ -57,9 +57,10 @@
                         </f:facet>
 
                         <p:panel header="#{ses27.descripcionSesion}" style="text-align:center">
+                            <h2>#{ses27.congrSala.nombre}</h2>
                             <h:panelGrid columns="2" style="width:100%">
 
-                                <h:outputLabel value="Moderador:" rendered="#{ses27.tipoSesion == 0}"></h:outputLabel>
+                                <h:outputLabel value="Moderación:" rendered="#{ses27.tipoSesion == 0}"></h:outputLabel>
                                 <h:outputText value="#{ses27.congrModerador.nombre} #{ses27.congrModerador.apellidos}" rendered="#{ses27.tipoSesion == 0}" />
 
                                 <h:outputLabel value="Hora de Inicio:"></h:outputLabel>
@@ -85,9 +86,10 @@
                         </f:facet>
 
                         <p:panel header="#{ses28.descripcionSesion}" style="text-align:center">
+                            <h2>#{ses28.congrSala.nombre}</h2>
                             <h:panelGrid columns="2" style="width:100%">
 
-                                <h:outputLabel value="Moderador:" rendered="#{ses28.tipoSesion == 0}"></h:outputLabel>
+                                <h:outputLabel value="Moderación:" rendered="#{ses28.tipoSesion == 0}"></h:outputLabel>
                                 <h:outputText value="#{ses28.congrModerador.nombre} #{ses28.congrModerador.apellidos}" rendered="#{ses28.tipoSesion == 0}" />
 
                                 <h:outputLabel value="Hora de Inicio:"></h:outputLabel>
@@ -112,25 +114,42 @@
                         <p:outputPanel id="detalleEvento">
                             <p:panelGrid  columns="1" rendered="#{not empty calendarioBean.sesionSeleccionada}" styleClass="ventanaDetalleSesion">
 
+                                <p:panelGrid columns="2" styleClass="panelDetalleSesion">
+                                    
+                                    <h:outputLabel value="Fecha:" />
+                                    <h:outputText value="#{calendarioBean.sesionSeleccionada.fechaDesde}">
+                                        <f:convertDateTime pattern="dd/MM/yyyy" locale="es_CR" timeZone="America/Costa_Rica" />
+                                    </h:outputText>
+                                    
+                                    <h:outputLabel value="Hora de inicio:" />
+                                    <h:outputText value="#{calendarioBean.sesionSeleccionada.fechaDesde}">
+                                        <f:convertDateTime pattern="hh:mm a" locale="es_CR" timeZone="America/Costa_Rica" />
+                                    </h:outputText>
 
-                                <h:outputText value="Moderador:" />
-                                <h:outputText value="#{calendarioBean.sesionSeleccionada.congrModerador.nombre} #{calendarioBean.sesionSeleccionada.congrModerador.apellidos}" />
+                                    <h:outputLabel value="Hora de finalización:" />
+                                    <h:outputText value="#{calendarioBean.sesionSeleccionada.fechaDesde}">
+                                        <f:convertDateTime pattern="hh:mm a" locale="es_CR" timeZone="America/Costa_Rica" />
+                                    </h:outputText>
+                                    
+                                    <h:outputLabel value="Moderación:" rendered="#{calendarioBean.sesionSeleccionada.tipoSesion == 0}" />
+                                    <h:outputText value="#{calendarioBean.sesionSeleccionada.congrModerador.nombre} #{calendarioBean.sesionSeleccionada.congrModerador.apellidos}" rendered="#{calendarioBean.sesionSeleccionada.tipoSesion == 0}" />
+                                    
+                                    <h:outputLabel value="Sala: "/>
+                                    <h:outputText value="#{calendarioBean.sesionSeleccionada.congrSala.nombre}"  />
+                                    
+                                </p:panelGrid>
 
-                                <div id="contenidoSala">
-                                    <h2>Información de la sala</h2>
-                                    <p>Esta sesión se llevará a cabo en la sala #{calendarioBean.sesionSeleccionada.congrSala.nombre}</p>
-                                    <h3>Detalle de la sala</h3>
-                                    <h:outputText value="#{calendarioBean.sesionSeleccionada.congrSala.descripcion}" />
-                                </div>
+
+
                                 <p:outputPanel rendered="#{calendarioBean.sesionSeleccionada.tipoSesion == 0}">
                                     <br />
                                     <h2>Trabajos Académicos</h2>
                                     <p:dataGrid id="trabajosAcademicos" var="trabajo" value="#{calendarioBean.trabajosAcademicos}" columns="1" paginator="false" emptyMessage="No hay trabajos académicos asociados">
                                         <p>
-                                            Nombre del trabajo académico: <a href="http://congresoctg.ucr.ac.cr/memoria/?actividad=#{trabajo.idTrabajoAcademico}&amp;ejeTematico=#{trabajo.congrEjeTematico.idEjeTematico}" target="_blank">#{trabajo.nombreTrabajo}</a>
-                                         </p>
+                                            Título del trabajo académico: <a href="http://congresoctg.ucr.ac.cr/memoria/?actividad=#{trabajo.idTrabajoAcademico}&amp;ejeTematico=#{trabajo.congrEjeTematico.idEjeTematico}" target="_blank">#{trabajo.nombreTrabajo}</a>
+                                        </p>
                                         <p>Eje temático: #{trabajo.congrEjeTematico.nombre}</p>
-                                        <h3>Autores</h3>
+                                        <h3>Autoría</h3>
                                         <p:dataGrid id="autores" var="autor" value="#{calendarioBean.getAutores(trabajo)}" columns="1" paginator="false" emptyMessage="No hay autores asociados">
                                             <p>#{autor.nombre} #{autor.apellidos}</p>
                                         </p:dataGrid>

@@ -64,6 +64,18 @@ body{
     
 }
 
+.panelDetalleSesion .ui-block-a{
+    width: 30% !Important;   
+}
+
+.panelDetalleSesion label{
+    font-weight: bolder !Important;    
+}
+
+.panelDetalleSesion .ui-block-b{
+    width: 70% !Important;     
+}
+
 form{
     margin: 0 !Important;
     background-color: white;
