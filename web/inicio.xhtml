@@ -21,6 +21,10 @@
 
             <pm:content styleClass="contenido">
                 <h1>#{calendarioBean.congreso.nombre}</h1>
+                <p:tabMenu activeIndex="0">
+                    <p:menuitem value="Inicio" icon="ui-icon-home" outcome="inicio" iconPos="top"/>                    
+                    <p:menuitem value="Autoría" icon="ui-icon-search" outcome="autoria" iconPos="top"/>
+                </p:tabMenu>
                 <h:form id="frmPrincipal">
                     <p:dataGrid id="sesiones26" var="ses26" value="#{calendarioBean.listaSesiones26}" columns="3" paginator="false">
                         <f:facet name="header">
@@ -115,12 +119,12 @@
                             <p:panelGrid  columns="1" rendered="#{not empty calendarioBean.sesionSeleccionada}" styleClass="ventanaDetalleSesion">
 
                                 <p:panelGrid columns="2" styleClass="panelDetalleSesion">
-                                    
+
                                     <h:outputLabel value="Fecha:" />
                                     <h:outputText value="#{calendarioBean.sesionSeleccionada.fechaDesde}">
                                         <f:convertDateTime pattern="dd/MM/yyyy" locale="es_CR" timeZone="America/Costa_Rica" />
                                     </h:outputText>
-                                    
+
                                     <h:outputLabel value="Hora de inicio:" />
                                     <h:outputText value="#{calendarioBean.sesionSeleccionada.fechaDesde}">
                                         <f:convertDateTime pattern="hh:mm a" locale="es_CR" timeZone="America/Costa_Rica" />
@@ -130,13 +134,13 @@
                                     <h:outputText value="#{calendarioBean.sesionSeleccionada.fechaDesde}">
                                         <f:convertDateTime pattern="hh:mm a" locale="es_CR" timeZone="America/Costa_Rica" />
                                     </h:outputText>
-                                    
+
                                     <h:outputLabel value="Moderación:" rendered="#{calendarioBean.sesionSeleccionada.tipoSesion == 0}" />
                                     <h:outputText value="#{calendarioBean.sesionSeleccionada.congrModerador.nombre} #{calendarioBean.sesionSeleccionada.congrModerador.apellidos}" rendered="#{calendarioBean.sesionSeleccionada.tipoSesion == 0}" />
-                                    
+
                                     <h:outputLabel value="Sala: "/>
                                     <h:outputText value="#{calendarioBean.sesionSeleccionada.congrSala.nombre}"  />
-                                    
+
                                 </p:panelGrid>
 
 

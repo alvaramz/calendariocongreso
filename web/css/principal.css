@@ -81,6 +81,10 @@ form{
     background-color: white;
 }
 
+.frmPrincipalAutoria{
+    color: black !Important;    
+}
+
 @media all and (min-width: 460px) {
     .encabezado{
         background-image: url("imagenes/460p/logo-congreso.png");
