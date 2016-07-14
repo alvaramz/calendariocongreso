@@ -33,8 +33,23 @@
                     <p:dataGrid var="autor" value="#{autoriaBean.listaAutores}" columns="3">
 
                         <p:panel header="#{autor.apellidos}, #{autor.nombre}">
-                            <p:dataGrid var="trabajo" value="#{autoriaBean.obtenerTrabajosAcademicos(autor)}" columns="1" emptyMessage="No hay trabajos académicos registrados.">
+                            <p:dataGrid var="trabajo" value="#{autoriaBean.obtenerTrabajosAcademicos(autor)}" columns="1" emptyMessage="No hay trabajos académicos registrados." styleClass="detalleAutor">
                                 <a href="http://congresoctg.ucr.ac.cr/memoria/?actividad=#{trabajo.idTrabajoAcademico}&amp;ejeTematico=#{trabajo.congrEjeTematico.idEjeTematico}" target="_blank">#{trabajo.nombreTrabajo}</a>
+                                <p:outputLabel value="#{trabajo.congrSesion.descripcionSesion}" styleClass="labelDetalleAutor" />
+                                <p:outputLabel value="FECHA: " styleClass="labelDetalleAutor"/>
+                                <p:outputLabel value="#{trabajo.congrSesion.fechaDesde}" styleClass="labelDetalleAutor">
+                                    <f:convertDateTime locale="es_CR" timeZone="America/Costa_Rica" pattern="dd/MM/yyyy" />                                    
+                                </p:outputLabel>
+                                <p:outputLabel value="HORA DE INICIO: " styleClass="labelDetalleAutor" />
+                                <p:outputLabel value="#{trabajo.congrSesion.fechaDesde}" styleClass="labelDetalleAutor">
+                                    <f:convertDateTime locale="es_CR" timeZone="America/Costa_Rica" pattern="hh:mm a" />                                    
+                                </p:outputLabel>
+                                <p:outputLabel value="HORA DE FINALIZACIÓN: " styleClass="labelDetalleAutor" />
+                                <p:outputLabel value="#{trabajo.congrSesion.fechaHasta}" styleClass="labelDetalleAutor">
+                                    <f:convertDateTime locale="es_CR" timeZone="America/Costa_Rica" pattern="hh:mm a" />                                    
+                                </p:outputLabel>
+                                <p:outputLabel value="SALA: " styleClass="labelDetalleAutor" />
+                                <p:outputLabel value="#{trabajo.congrSesion.congrSala.nombre}" styleClass="labelDetalleAutor" />
                                 <br />
                                 <br />
                             </p:dataGrid>

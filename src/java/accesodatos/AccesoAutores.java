@@ -38,6 +38,8 @@ public class AccesoAutores {
                 for (Object trabajoObj : autor.getCongrTrabajoAcademicos()) {
                     CongrTrabajoAcademico trabajo = (CongrTrabajoAcademico) trabajoObj;
                     Hibernate.initialize(trabajo.getCongrEjeTematico());
+                    Hibernate.initialize(trabajo.getCongrSesion());
+                    Hibernate.initialize(trabajo.getCongrSesion().getCongrSala());
                 }
             }
         } catch (Exception e) {
