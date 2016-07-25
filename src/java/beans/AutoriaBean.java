@@ -1,9 +1,11 @@
 package beans;
 
 import accesodatos.AccesoAutores;
+import accesodatos.AccesoTrabajosAcademicos;
 import entidades.CongrAutor;
 import entidades.CongrTrabajoAcademico;
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
@@ -32,10 +34,15 @@ public class AutoriaBean implements Serializable{
         List<CongrTrabajoAcademico> trabajosAcademicos = new ArrayList<>();
 
         for (Object trabajo : autor.getCongrTrabajoAcademicos()) {
-            trabajosAcademicos.add((CongrTrabajoAcademico) trabajo);
+            trabajosAcademicos.add(obtenerTrabajoAcademico(((CongrTrabajoAcademico) trabajo).getIdTrabajoAcademico()));
         }
 
         return trabajosAcademicos;
+    }
+    
+    public CongrTrabajoAcademico obtenerTrabajoAcademico(BigDecimal idTrabajoAcademico){
+        AccesoTrabajosAcademicos accesoTrabajosAcademicos = new AccesoTrabajosAcademicos();
+        return accesoTrabajosAcademicos.obtenerTrabajoAcademico(idTrabajoAcademico);
     }
 
     public void buscar() {

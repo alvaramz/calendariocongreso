@@ -14,8 +14,21 @@ body{
     height: 156px;
     background-image: url("imagenes/logo-congreso.png");
     background-repeat: no-repeat;
-    background-position: center;
-    text-shadow: none;
+    background-position: center;   
+}
+
+.encabezado > .ui-shadow{
+    box-shadow: none !important;    
+}
+
+.encabezado > a {
+    display: block;
+    width: 100%;
+    height: 90%;
+    border: none !important;
+    background-color: transparent !important;
+    border: none !important;
+    
 }
 
 .contenido{
@@ -83,6 +96,11 @@ form{
 
 .frmPrincipalAutoria{
     color: black !Important;    
+}
+
+.labelDetalleAutor{
+    display: inline !important;
+    font-weight: bolder !important;    
 }
 
 @media all and (min-width: 460px) {

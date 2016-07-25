@@ -43,6 +43,29 @@ public class AccesoTrabajosAcademicos {
         }
 
         return trabajosAcademicos;
-    }   
+    }
+     
+    public CongrTrabajoAcademico obtenerTrabajoAcademico(BigDecimal idTrabajoAcademico){
+        CongrTrabajoAcademico trabajoAcademico = null;
+        Session session;
+        session = HibernateUtil.getSessionFactory().openSession();
+
+        try {          
+            Query q = session.createQuery("from CongrTrabajoAcademico where idTrabajoAcademico = :idTrabajoAcademico");
+            q.setParameter("idTrabajoAcademico", idTrabajoAcademico);
+            trabajoAcademico = (CongrTrabajoAcademico) q.uniqueResult();
+
+            Hibernate.initialize(trabajoAcademico.getCongrSesion());
+            Hibernate.initialize(trabajoAcademico.getCongrSesion().getCongrSala());
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        } finally {
+            if (session.isOpen()) {
+                session.close();
+            }
+        }
+
+        return trabajoAcademico;
+    }
     
 }

@@ -34,13 +34,7 @@ public class AccesoAutores {
             autores = (List<CongrAutor>) q.list();
 
             for (CongrAutor autor : autores) {
-                Hibernate.initialize(autor.getCongrTrabajoAcademicos());
-                for (Object trabajoObj : autor.getCongrTrabajoAcademicos()) {
-                    CongrTrabajoAcademico trabajo = (CongrTrabajoAcademico) trabajoObj;
-                    Hibernate.initialize(trabajo.getCongrEjeTematico());
-                    Hibernate.initialize(trabajo.getCongrSesion());
-                    Hibernate.initialize(trabajo.getCongrSesion().getCongrSala());
-                }
+                Hibernate.initialize(autor.getCongrTrabajoAcademicos());                
             }
         } catch (Exception e) {
             System.out.println(e.toString());

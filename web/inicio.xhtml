@@ -16,7 +16,7 @@
     <h:body>
         <pm:page>
             <pm:header title="" styleClass="encabezado">
-
+                <a href="http://congresoctg.ucr.ac.cr"></a>
             </pm:header>
 
             <pm:content styleClass="contenido">
@@ -36,7 +36,7 @@
                             <h:panelGrid columns="2" style="width:100%">
 
                                 <h:outputLabel value="Moderación:" rendered="#{ses26.tipoSesion == 0}"></h:outputLabel>
-                                <h:outputText value="#{ses26.congrModerador.nombre} #{ses26.congrModerador.apellidos}" rendered="#{ses26.tipoSesion == 0}" />
+                                <h:outputText value="#{ses26.congrModerador.nombre} #{ses26.congrModerador.apellidos}, #{ses26.congrModerador.institucion}" rendered="#{ses26.tipoSesion == 0}" />
 
                                 <h:outputLabel value="Hora de Inicio:"></h:outputLabel>
                                 <h:outputText value="#{ses26.fechaDesde}">
@@ -65,7 +65,7 @@
                             <h:panelGrid columns="2" style="width:100%">
 
                                 <h:outputLabel value="Moderación:" rendered="#{ses27.tipoSesion == 0}"></h:outputLabel>
-                                <h:outputText value="#{ses27.congrModerador.nombre} #{ses27.congrModerador.apellidos}" rendered="#{ses27.tipoSesion == 0}" />
+                                <h:outputText value="#{ses27.congrModerador.nombre} #{ses27.congrModerador.apellidos}, #{ses27.congrModerador.institucion}" rendered="#{ses27.tipoSesion == 0}" />
 
                                 <h:outputLabel value="Hora de Inicio:"></h:outputLabel>
                                 <h:outputText value="#{ses27.fechaDesde}">
@@ -94,7 +94,7 @@
                             <h:panelGrid columns="2" style="width:100%">
 
                                 <h:outputLabel value="Moderación:" rendered="#{ses28.tipoSesion == 0}"></h:outputLabel>
-                                <h:outputText value="#{ses28.congrModerador.nombre} #{ses28.congrModerador.apellidos}" rendered="#{ses28.tipoSesion == 0}" />
+                                <h:outputText value="#{ses28.congrModerador.nombre} #{ses28.congrModerador.apellidos}, #{ses28.congrModerador.institucion}" rendered="#{ses28.tipoSesion == 0}" />
 
                                 <h:outputLabel value="Hora de Inicio:"></h:outputLabel>
                                 <h:outputText value="#{ses28.fechaDesde}">
