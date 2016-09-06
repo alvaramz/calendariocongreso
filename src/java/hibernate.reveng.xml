@@ -1,26 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd">
 <hibernate-reverse-engineering>
-  <schema-selection match-schema="SIGEPRO"/>
-  <table-filter match-name="SEG_USUARIO_ROL"/>
-  <table-filter match-name="CONGR_TRABAJO_ACADEMICO"/>
-  <table-filter match-name="CONGR_TRABAJO_ACADEMICO_AUTOR"/>
-  <table-filter match-name="CONGR_SESION"/>
-  <table-filter match-name="EXP_PERSONA"/>
-  <table-filter match-name="SEG_PERMISO"/>
-  <table-filter match-name="CONGR_ADJUNTO"/>
-  <table-filter match-name="ADM_ADJUNTO_TIPO_MIME"/>
-  <table-filter match-name="CONGR_TIPO_TRABAJO_ACADEMICO"/>
-  <table-filter match-name="NACION"/>
-  <table-filter match-name="SEG_ROL_PERMISO"/>
-  <table-filter match-name="CONGR_EJE_TEMATICO"/>
-  <table-filter match-name="CONGR_SALA"/>
-  <table-filter match-name="SEG_USUARIO"/>
-  <table-filter match-name="SEG_ROL"/>
-  <table-filter match-name="CONGR_CONGRESO"/>
-  <table-filter match-name="ADM_MODULO_SISTEMA"/>
-  <table-filter match-name="ADM_TIPO_IDENTIFICACION"/>
-  <table-filter match-name="SEG_USUARIO_INTERNO"/>
-  <table-filter match-name="CONGR_AUTOR"/>
-  <table-filter match-name="CONGR_MODERADOR"/>
+  <schema-selection match-schema="BASE_DATOS"/>
+  
 </hibernate-reverse-engineering>
