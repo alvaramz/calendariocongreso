@@ -1,0 +1,6 @@
+{
+  "name": "Calendariocongreso",
+  "tagline": "",
+  "body": "### Esqueleto para el calendario de un congreso.\r\n\r\nEl presente proyecto, desarrollado por el Ing. Adrián Alvarado Ramírez, constituye un esqueleto para el calendario de un congreso. \r\n\r\nFue implementado utilizando la tecnología Java Web, con los Frameworks: Hibernate 4.x, Java Server Faces 2.2 y Primefaces Mobile.\r\n\r\n",
+  "note": "Don't delete this file! It's used internally to help with page regeneration."
+}
